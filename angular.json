@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "note-app"
+  "defaultProject": "note-app",
+  "cli": {
+    "analytics": "e3e77274-5772-4a1c-9107-3836aaa098ce"
+  }
 }
