@@ -3,4 +3,87 @@
 @import 'tailwindcss/components';
 
 @import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap');
+
+
+@import './assets/scss/icons';
+
+
 /* You can add global styles to this file, and also import other style files */
+body{
+    font-family: 'Raleway', sans-serif;
+    background-color: #f1f1f1;
+}
+@layer components {
+    .flex-box {
+      @apply tw-flex;
+      @apply tw-items-center;
+    }
+    .flex-c-b {
+      @apply flex-box;
+      @apply tw-justify-between;
+    }
+    .flex-s {
+      @apply tw-flex;
+      @apply tw-items-start;
+    }
+    .flex-c-s {
+      @apply flex-s;
+      @apply tw-justify-start;
+    }
+    .flex-e-b {
+      @apply tw-flex;
+      @apply tw-items-end;
+      @apply tw-justify-between;
+    }
+    .flex-e-b {
+      @apply tw-flex;
+      @apply tw-items-end;
+      @apply tw-justify-between;
+    }
+    .flex-c-e {
+      @apply tw-items-center;
+      @apply tw-justify-end;
+    }
+    .flex-c-c {
+      @apply flex-box;
+      @apply tw-justify-center;
+    }
+    .flex-c-e {
+      @apply flex-box;
+      @apply tw-justify-end;
+    }
+    .flex-c-r {
+      @apply flex-box;
+      @apply tw-justify-around;
+    }
+    .inputLabel {
+      @apply tw-text-base;
+      @apply tw-font-normal;
+      @apply tw-text-gray-600;
+      @apply tw-mb-2;
+      @apply tw-block;
+    }
+    .active-link {
+      @apply tw-text-coral;
+      @apply tw-font-semibold;
+      @apply tw-border-b;
+      @apply tw-border-coral;
+    }
+    .transition-du200 {
+      @apply tw-transition tw-duration-300 #{!important};
+    }
+    .progress-circle {
+      @apply after:tw-w-3 after:tw-h-3  after:tw-content-[''] 
+      after:tw-absolute after:tw-right-0 after:tw-top-[8px] after:tw-rounded-lg after:tw-border-2;
+    }
+    .progress-circle-b {
+      @apply before:tw-w-3 before:tw-h-3  before:tw-content-[''] 
+      before:tw-absolute before:tw-left-0 before:tw-top-[8px] before:tw-rounded-lg before:tw-border-2;
+    }
+    .btn-border {
+      @apply tw-border-2 tw-border-coral tw-border-solid #{!important};
+    }
+  }
+  

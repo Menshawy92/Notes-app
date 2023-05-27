@@ -1,3 +1,43 @@
-<p>
-  list-todo works!
-</p>
+<div class="flex-s tw-gap-2">
+  <!-- add -->
+  <div class="tw-bg-white tw-p-5 tw-mt-2 tw-flex-1">
+    <!-- title -->
+    <div class="tw-relative tw-max-w-max tw-mx-auto">
+      <h1
+        class="tw-capitalize tw-text-lg progress-circle progress-circle-b tw-text-center tw-px-8 after:tw-border-blue-500 before:tw-border-blue-500">
+        new tasks</h1>
+    </div>
+    <!-- list -->
+    <div>
+      <app-item></app-item>
+    </div>
+  </div>
+
+  <!-- in-progress -->
+  <div class="tw-bg-white tw-p-5 tw-mt-2 tw-flex-1">
+    <!-- title -->
+    <div class="tw-relative tw-max-w-max tw-mx-auto">
+      <h1
+        class="tw-capitalize tw-text-lg progress-circle progress-circle-b tw-text-center tw-px-8 after:tw-border-yellow-500 before:tw-border-yellow-500">
+        in progress</h1>
+    </div>
+    <!-- list -->
+    <div>
+      <app-item></app-item>
+    </div>
+  </div>
+
+  <!-- complete -->
+  <div class="tw-bg-white tw-p-5 tw-mt-2 tw-flex-1">
+    <!-- title -->
+    <div class="tw-relative tw-max-w-max tw-mx-auto">
+      <h1
+        class="tw-capitalize tw-text-lg progress-circle progress-circle-b tw-text-center tw-px-8 after:tw-border-green-500 before:tw-border-green-500">
+        completed</h1>
+    </div>
+    <!-- list -->
+    <div>
+      <app-item></app-item>
+    </div>
+  </div>
+</div>
