@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/todoList', pathMatch: 'full' },
   { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
 ];
 
