@@ -1,22 +1,22 @@
-<div class="tw-mt-3">
+<div class="tw-mt-3" *ngFor="let task of tasks">
   <div class="tw-border tw-border-gray-100 tw-p-4">
     <div class="flex-c-b">
-      <h3 class="tw-capitalize tw-text-base tw-text-blue-500 tw-font-medium">task name</h3>
+      <h3 class="tw-capitalize tw-text-base tw-text-blue-500 tw-font-medium">{{task.title}}</h3>
       <div class="tw-text-xs tw-space-x-1"><i class="icon icon-calendar-o tw-opacity-70"></i> <span
-          class="tw-text-black tw-font-medium">20 / 6 / 2023</span></div>
+          class="tw-text-black tw-font-medium">{{task.formDate}}</span></div>
     </div>
     <p class="tw-my-2 tw-text-sm tw-leading-5 tw-text-gray-500">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry
+      {{task.description}}
     </p>
     <div class="flex-c-b">
       <div class="tw-text-xs tw-space-x-1">
-        <i class="icon icon-chart tw-opacity-70"></i> <span class="tw-text-black tw-font-medium">High priority</span>
+        <i class="icon icon-chart tw-opacity-70"></i> <span class="tw-text-black tw-font-medium">{{task.priority}}</span>
       </div>
       <div class="tw-text-xs tw-space-x-1"><i class="icon icon-clock-1 tw-opacity-70"></i> <span
-          class="tw-text-black tw-font-medium">3 hours</span></div>
+          class="tw-text-black tw-font-medium">{{task.estimation}}</span></div>
       <div class="tw-text-xs tw-space-x-1">
         <i class="icon icon-cloud-computing tw-opacity-70"></i> <span
-          class="tw-text-black tw-font-medium">personal</span>
+          class="tw-text-black tw-font-medium">{{task.classification}}</span>
       </div>
     </div>
     <div class="tw-space-x-1 tw-mt-4">
