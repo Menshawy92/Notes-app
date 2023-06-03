@@ -9,7 +9,7 @@
     </div>
     <!-- list -->
     <div>
-      <app-item [tasks]="allTasks" ></app-item>
+      <app-item [tasks]="allTasks" (dataItem)="updateTask($event)" (IdItem)="deleteTask($event)"></app-item>
     </div>
   </div>
 
@@ -41,3 +41,4 @@
     </div>
   </div>
 </div>
+<!-- <app-add-task></app-add-task> -->

@@ -1,0 +1,56 @@
+<div class="tw-absolute tw-inset-x-0 tw-inset-y-0 tw-bg-white tw-w-5/12 tw-h-max 
+  tw-text-center tw-shadow-lg tw-m-auto tw-z-10">
+  <div>
+    <header class="flex-c-b tw-border-b tw-border-gray-200 tw-p-5">
+      <h3 class="tw-font-bold tw-text-lg tw-capitalize">{{this.dataId.isMode ? "edit task":"add task"}}</h3>
+      <div class="tw-cursor-pointer" (click)="close()">
+        <i class="icon icon-close"></i>
+      </div>
+    </header>
+    <main class="tw-p-5">
+      <form class="tw-space-y-2" [formGroup]="addForm">
+        <div>
+          <input type="text" formControlName="title" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full"
+            placeholder="title">
+        </div>
+        <div>
+          <input type="date" formControlName="formDate" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full"
+            placeholder="Date">
+        </div>
+        <div>
+          <textarea rows="3" formControlName="description" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-w-full"
+            placeholder="description"></textarea>
+        </div>
+        <div>
+          <select name="" formControlName="priority" placeholder="priority"
+            class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full">
+            <option value="" disabled selected hidden>Priority Choose...</option>
+            <option *ngFor="let item of PriorityList"  [value]="item.name">{{item.name}}</option>
+          </select>
+        </div>
+        <div>
+          <div>
+            <select name="" formControlName="classification" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full">
+              <option value="" disabled selected hidden>Classification Choose...</option>
+              <option *ngFor="let item of classification" [value]="item.name">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <input type="time" formControlName="estimation" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full"
+            placeholder="estimation">
+        </div>
+        <!-- actions -->
+        <div class="flex-box tw-gap-3 tw-justify-end tw-pt-4">
+          <button class="tw-bg-neutral-400 tw-text-white tw-h-10 tw-px-4 hover:tw-bg-neutral-600 transition-du200" (click)="close()"> Discard </button>
+          <button class="tw-bg-pink-600 tw-text-white tw-h-10 tw-px-4 hover:tw-bg-pink-800 transition-du200 tw-capitalize" (click)="allActions()"> {{this.dataId.isMode ? "edit task":"add task"}} </button>
+        </div>
+      </form>
+    </main>
+    <footer>
+
+    </footer>
+  </div>
+</div>
+<!-- overlayBackground -->
+<div class="tw-bg-black tw-opacity-70 tw-absolute tw-inset-x-0	tw-inset-y-0"></div>

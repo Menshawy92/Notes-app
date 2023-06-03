@@ -20,13 +20,13 @@
       </div>
     </div>
     <div class="tw-space-x-1 tw-mt-4">
-      <button type="submit"
+      <button type="submit" (click)="updateItem(task)"
         class="tw-bg-yellow-500 hover:tw-bg-yellow-800 tw-capitalize tw-text-white tw-h-10 tw-px-4 transition-du200">
         edit </button>
       <button type="submit"
         class="tw-bg-gray-500 hover:tw-bg-gray-800 tw-capitalize tw-text-white tw-h-10 tw-px-4 transition-du200"> hold
       </button>
-      <button type="submit"
+      <button type="submit" (click)="deleteItem(task.id)"
         class="tw-bg-red-500 hover:tw-bg-red-800 tw-capitalize tw-text-white tw-h-10 tw-px-4 transition-du200"> delete
       </button>
     </div>
