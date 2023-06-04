@@ -7,6 +7,7 @@ import { TasksService } from '../../services/tasks.service';
 import { CLASSIFICATION_LIST, PRIORITY_LIST } from 'src/app/constant/selectData.constants';
 import { format } from 'date-fns'
 import { CustomValidationService } from 'src/app/core/services/customvalidation.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class AddTaskComponent implements OnInit {
   classification = [...CLASSIFICATION_LIST]
 
   constructor(private route: ActivatedRoute, private _router: Router, private fb: FormBuilder,
-    private listService: TasksService, private _customValidation:CustomValidationService) {
+    private listService: TasksService, private _customValidation:CustomValidationService,private _toastr: ToastrService) {
     this.dataId = this.route.snapshot.queryParams;
     console.log("dataId", this.dataId.classification)
   }
@@ -56,12 +57,12 @@ export class AddTaskComponent implements OnInit {
   }
 
   getData() {
-    this.isSubmitted = true;
     const data = {
       ...this.addForm.value,
       formDate: moment(this.addForm.value['formDate']).format('DD-MM-YYYY')
     }
     this.subscription = this.listService.addTask(data).subscribe(res => {
+      this._toastr.success("yse!")
       this.close()
     })
   }
