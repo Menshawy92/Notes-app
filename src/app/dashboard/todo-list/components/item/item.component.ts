@@ -13,7 +13,6 @@ export class ItemComponent implements OnInit {
   constructor(private _router: Router) { }
 
   ngOnInit() {
-
   }
 
   updateItem(item: any) {

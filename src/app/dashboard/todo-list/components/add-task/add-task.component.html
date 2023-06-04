@@ -8,42 +8,75 @@
       </div>
     </header>
     <main class="tw-p-5">
-      <form class="tw-space-y-2" [formGroup]="addForm">
+      <form class="tw-space-y-3" [formGroup]="addForm">
         <div>
-          <input type="text" formControlName="title" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full"
-            placeholder="title">
+          <input type="text" formControlName="title"
+            class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full" placeholder="title">
+          <div *ngIf="isFieldInvalid('title')"
+            class="tw-text-xs tw-font-medium tw-text-red-500 tw-mt-2 tw-capitalize tw-text-left">
+            <div *ngIf="getControl('title').errors.required">title is required</div>
+            <div *ngIf="getControl('title').errors.minlength">At least 4 characters must be written</div>
+            <div *ngIf="getControl('title').errors.maxlength">You have exceeded the character limit (20).</div>
+          </div>
         </div>
         <div>
-          <input type="date" formControlName="formDate" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full"
-            placeholder="Date">
+          <input type="date" formControlName="formDate"
+            class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full" placeholder="Date">
+          <div *ngIf="isFieldInvalid('formDate')"
+            class="tw-text-xs tw-font-medium tw-text-red-500 tw-mt-2 tw-capitalize tw-text-left">
+            <div *ngIf="getControl('formDate').errors.required">date is required</div>
+            <div *ngIf="getControl('formDate').errors.lessThanToday">date expired.</div>
+          </div>
         </div>
         <div>
-          <textarea rows="3" formControlName="description" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-w-full"
-            placeholder="description"></textarea>
+          <textarea rows="3" formControlName="description"
+            class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-w-full" placeholder="description"></textarea>
+          <div *ngIf="isFieldInvalid('description')"
+            class="tw-text-xs tw-font-medium tw-text-red-500 tw-mt-2 tw-capitalize tw-text-left">
+            <div *ngIf="getControl('description').errors.required">description is required</div>
+            <div *ngIf="getControl('description').errors.minlength">At least 20 characters must be written</div>
+            <div *ngIf="getControl('description').errors.maxlength">You have exceeded the character limit (200).</div>
+          </div>
         </div>
         <div>
           <select name="" formControlName="priority" placeholder="priority"
             class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full">
             <option value="" disabled selected hidden>Priority Choose...</option>
-            <option *ngFor="let item of PriorityList"  [value]="item.name">{{item.name}}</option>
+            <option *ngFor="let item of PriorityList" [value]="item.name">{{item.name}}</option>
           </select>
-        </div>
-        <div>
-          <div>
-            <select name="" formControlName="classification" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full">
-              <option value="" disabled selected hidden>Classification Choose...</option>
-              <option *ngFor="let item of classification" [value]="item.name">{{item.name}}</option>
-            </select>
+          <div *ngIf="isFieldInvalid('priority')"
+            class="tw-text-xs tw-font-medium tw-text-red-500 tw-mt-2 tw-capitalize tw-text-left">
+            <div *ngIf="getControl('priority').errors.required">priority is required</div>
           </div>
         </div>
         <div>
-          <input type="time" formControlName="estimation" class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full"
-            placeholder="estimation">
+          <div>
+            <select name="" formControlName="classification"
+              class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full">
+              <option value="" disabled selected hidden>Classification Choose...</option>
+              <option *ngFor="let item of classification" [value]="item.name">{{item.name}}</option>
+            </select>
+            <div *ngIf="isFieldInvalid('classification')"
+              class="tw-text-xs tw-font-medium tw-text-red-500 tw-mt-2 tw-capitalize tw-text-left">
+              <div *ngIf="getControl('classification').errors.required">classification is required</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <input type="time" formControlName="estimation"
+            class="tw-border tw-border-gray-200 placeholder:tw-text-sm tw-h-10 tw-w-full" placeholder="estimation">
+          <div *ngIf="isFieldInvalid('estimation')"
+            class="tw-text-xs tw-font-medium tw-text-red-500 tw-mt-2 tw-capitalize tw-text-left">
+            <div *ngIf="getControl('estimation').errors.required">estimation is required</div>
+          </div>
         </div>
         <!-- actions -->
         <div class="flex-box tw-gap-3 tw-justify-end tw-pt-4">
-          <button class="tw-bg-neutral-400 tw-text-white tw-h-10 tw-px-4 hover:tw-bg-neutral-600 transition-du200" (click)="close()"> Discard </button>
-          <button class="tw-bg-pink-600 tw-text-white tw-h-10 tw-px-4 hover:tw-bg-pink-800 transition-du200 tw-capitalize" (click)="allActions()"> {{this.dataId.isMode ? "edit task":"add task"}} </button>
+          <button class="tw-bg-neutral-400 tw-text-white tw-h-10 tw-px-4 hover:tw-bg-neutral-600 transition-du200"
+            (click)="close()"> Discard </button>
+          <button
+            class="tw-bg-pink-600 tw-text-white tw-h-10 tw-px-4 hover:tw-bg-pink-800 transition-du200 tw-capitalize disabled:tw-opacity-25"
+            (click)="allActions()" [disabled]="addForm.invalid"> {{this.dataId.isMode ? "edit task":"add task"}} </button>
         </div>
       </form>
     </main>
