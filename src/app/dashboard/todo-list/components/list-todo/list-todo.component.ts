@@ -3,6 +3,7 @@ import { TasksService } from '../../services/tasks.service';
 import { filter, first, pipe, Subscription } from 'rxjs';
 import { listTodo } from '../../models/toDoList';
 import { NavigationExtras, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-list-todo',
   templateUrl: './list-todo.component.html',
@@ -10,10 +11,10 @@ import { NavigationExtras, Router } from '@angular/router';
 export class ListTodoComponent implements OnInit {
   subscription: Subscription | any;
   allTasks: listTodo[] | any;
-  data:[] | any
-  isEdit : boolean = false;
+  data: [] | any
+  isEdit: boolean = false;
 
-  constructor(private listService: TasksService,private _router:Router) { }
+  constructor(private listService: TasksService, private _router: Router,private toaster: ToastrService) { }
 
   ngOnInit() {
     this.getAllTasks()
@@ -29,26 +30,26 @@ export class ListTodoComponent implements OnInit {
       },
       complete: () => {
         console.log("ADS is finished!")
+
       }
     })
   }
 
-  updateTask(item: [] | any){
+  updateTask(item: [] | any) {
     let status = this.isEdit = true
     this.data = item
-    console.log("data",this.data)
     const navigationExtras: NavigationExtras = {
-      queryParams: {...item,isMode:status},
+      queryParams: { ...item, isMode: status },
       skipLocationChange: true,
     }
-    this._router.navigate(['add-task'],navigationExtras);
-    console.log("navigationExtras",navigationExtras)
+    this._router.navigate(['add-task'], navigationExtras);
+    console.log("navigationExtras", navigationExtras)
   }
 
-  deleteTask(id:number|any){
+  deleteTask(id: number | any) {
     this.subscription = this.listService.deleteTask(id).subscribe(res => {
-      alert("deleted!")
-      this.getAllTasks() 
+      this.toaster.warning( "your task is deleted now! :)","Deleted!")
+      this.getAllTasks()
     })
   }
 

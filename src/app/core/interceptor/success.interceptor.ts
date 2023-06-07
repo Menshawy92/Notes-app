@@ -17,17 +17,18 @@ export class SuccessInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request)
-      .pipe(
-        tap((event: HttpEvent<any>) => {
-          if (event instanceof HttpResponse && event.status === 200) {
-            this.toaster.success('Success message', 'Success');
-          }
-        }, (error) => {
-          if (error.status === 0) {
-            this.toaster.error('Error message', 'Error');
-          }
-        })
-      );
+
   }
 }
 
+      // .pipe(
+      //   tap((event: HttpEvent<any>) => {
+      //     if (event instanceof HttpResponse && event.status === 200) {
+      //       this.toaster.success('Success message', 'Success');
+      //     }
+      //   }, (error) => {
+      //     if (error.status === 0) {
+      //       this.toaster.error('Error message', 'Error');
+      //     }
+      //   })
+      // );
