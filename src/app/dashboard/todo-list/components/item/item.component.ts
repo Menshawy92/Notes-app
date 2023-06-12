@@ -12,18 +12,34 @@ export class ItemComponent implements OnInit {
   @Output() IdItem: EventEmitter<string> = new EventEmitter<string>();
   idTask: number | any
   isHold: boolean = false
-  holdName: string = "hold"
+  holdName: any = "hold"
   name: string | any
   constructor(private _router: Router, private renderer: Renderer2) { }
 
   ngOnInit() {
-    const isHoldValue = localStorage.getItem('isHold');
-    if (isHoldValue === 'true') {
-      const taskItem = document.getElementById('taskItem');
-      if (taskItem != null) {
-        taskItem.classList.add('hold');
+    setTimeout(() => {
+      this.holdTask(this.isHold);
+      console.log("1000")
+    }, 100);
+   
+  }
+
+  ngDoCheck() {
+    const testClassAdded = localStorage.getItem('isHoldAdded') === 'true';
+    if (testClassAdded) {
+      console.log("testClassAdded", testClassAdded)
+      const element = document.getElementById('taskItem');
+      this.holdName = "unHold"
+      if (element) {
+        element.classList.add('hold');
       }
     }
+    else if (!testClassAdded) {
+      localStorage.removeItem('isHoldAdded');
+      document.getElementById('taskItem')?.classList.remove('hold');
+      this.holdName = "hold"
+    }
+
   }
 
   updateItem(item: any) {
@@ -38,14 +54,13 @@ export class ItemComponent implements OnInit {
     const ID = this.idTask = id
     if (ID === id) {
       this.isHold = !this.isHold;
-      this.holdName = this.isHold ? "unHold" : "Hold";
-      document.getElementById('taskItem')?.classList.toggle('hold')
+      // let x = this.holdName = this.isHold ? "unHold" : "Hold";
+      document.getElementById('taskItem')?.classList.add('hold')
       if (this.isHold) {
-        localStorage.setItem('isHold',  JSON.stringify(this.isHold));
+        localStorage.setItem('isHoldAdded', 'true');
       } else {
-        localStorage.removeItem('isHold');
+        localStorage.removeItem('isHoldAdded');
       }
     }
-
   }
 }

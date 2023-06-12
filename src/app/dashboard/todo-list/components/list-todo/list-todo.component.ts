@@ -14,7 +14,7 @@ export class ListTodoComponent implements OnInit {
   data: [] | any
   isEdit: boolean = false;
 
-  constructor(private listService: TasksService, private _router: Router,private toaster: ToastrService) { }
+  constructor(private listService: TasksService, private _router: Router, private toaster: ToastrService) { }
 
   ngOnInit() {
     this.getAllTasks()
@@ -48,7 +48,7 @@ export class ListTodoComponent implements OnInit {
 
   deleteTask(id: number | any) {
     this.subscription = this.listService.deleteTask(id).subscribe(res => {
-      this.toaster.warning( "your task is deleted now! :)","Deleted!")
+      this.toaster.warning("your task is deleted now! :)", "Deleted!")
       this.getAllTasks()
     })
   }
