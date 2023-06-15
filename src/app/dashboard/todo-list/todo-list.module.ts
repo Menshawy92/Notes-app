@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodoListRoutingModule } from './todo-list-routing.module';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
@@ -16,7 +17,8 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
   imports: [
     CommonModule,
     TodoListRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class TodoListModule { }

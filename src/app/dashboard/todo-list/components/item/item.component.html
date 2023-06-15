@@ -1,4 +1,4 @@
-<div class="tw-mt-3" *ngFor="let task of tasks" id="taskItem">
+<div class="tw-mt-3" *ngFor="let task of filteredItems" id="taskItem">
   <div class="tw-border tw-border-gray-100 tw-p-4">
     <div class="flex-c-b">
       <h3 class="tw-capitalize tw-text-base tw-text-blue-500 tw-font-medium">{{task.title}}</h3>
@@ -24,17 +24,19 @@
       <button type="submit" (click)="updateItem(task)" [disabled]="task.id === idTask ? isHold : ''"
         class="tw-bg-yellow-500 hover:tw-bg-yellow-800 tw-capitalize tw-text-white tw-h-10 tw-px-4 transition-du200 disabled:tw-cursor-no-drop">
         edit </button>
-        <!-- {{task.id === idTask ? "unHold":"hold"}} -->
+      <!-- {{task.id === idTask ? "unHold":"hold"}} -->
       <button type="submit" (click)="holdTask(task.id)"
-        class="tw-bg-gray-500 hover:tw-bg-gray-800 tw-capitalize tw-text-white tw-h-10 tw-px-4 transition-du200 hold-btn"> {{holdName}}
+        class="tw-bg-gray-500 hover:tw-bg-gray-800 tw-capitalize tw-text-white tw-h-10 tw-px-4 transition-du200 hold-btn">
+        {{holdName}}
       </button>
       <button type="submit" (click)="deleteItem(task.id)" [disabled]="task.id === idTask ? isHold : ''"
-        class="tw-bg-red-500 hover:tw-bg-red-800 tw-capitalize tw-text-white tw-h-10 tw-px-4 transition-du200 disabled:tw-cursor-no-drop"> delete
+        class="tw-bg-red-500 hover:tw-bg-red-800 tw-capitalize tw-text-white tw-h-10 tw-px-4 transition-du200 disabled:tw-cursor-no-drop">
+        delete
       </button>
     </div>
   </div>
 </div>
-<ng-container *ngIf="tasks?.length == 0">
+<ng-container *ngIf="filteredItems?.length == 0">
   <div class="tw-border tw-border-orange-200 tw-p-6 tw-text-center tw-mt-4 tw-bg-orange-100">
     empty status
   </div>

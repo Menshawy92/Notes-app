@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { DataService } from '../../services/getDataSearch.service';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -14,20 +14,26 @@ export class ItemComponent implements OnInit {
   isHold: boolean = false
   holdName: any = "hold"
   name: string | any
-  constructor(private _router: Router, private renderer: Renderer2) { }
+  filteredItems: [] | any;
+
+  constructor(private _router: Router, private dataService: DataService) { }
 
   ngOnInit() {
     setTimeout(() => {
       this.holdTask(this.isHold);
-      console.log("1000")
     }, 100);
-   
+  }
+
+  ngOnChanges() {
+    this.dataService.currentData.subscribe(res => {
+      this.filteredItems = res
+    })
+    this.dataService.resultData(this.tasks)
   }
 
   ngDoCheck() {
     const testClassAdded = localStorage.getItem('isHoldAdded') === 'true';
     if (testClassAdded) {
-      console.log("testClassAdded", testClassAdded)
       const element = document.getElementById('taskItem');
       this.holdName = "unHold"
       if (element) {
